@@ -82,7 +82,8 @@ namespace PocoGenerator
         // Method to generate POCO class for a given table
         static void GeneratePocoClass(string directory, string tableName, IEnumerable<DataRow> columns)
         {
-            var className = ToPascalCase(tableName);
+            // var className = ToPascalCase(tableName);
+            var className = tableName;
             var sb = new StringBuilder();
 
             sb.AppendLine();
@@ -92,7 +93,8 @@ namespace PocoGenerator
 
             foreach (var column in columns)
             {
-                var columnName = ToPascalCase(column["COLUMN_NAME"].ToString());
+                // var columnName = ToPascalCase(column["COLUMN_NAME"].ToString());
+                var columnName = column["COLUMN_NAME"].ToString();
                 var dataType = GetClrType(column["DATA_TYPE"].ToString());
                 var isNullable = column["IS_NULLABLE"].ToString() == "YES";
 
